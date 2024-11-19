@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is TestTask For Developes Today
+made by alexandrkadai
 
 ## Getting Started
 
-First, run the development server:
+First of all install all dependencies using
+npm i
 
-```bash
+To start program run the development server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To run version for build use npm ren build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## About Technologies
 
-## Learn More
+This project created by using Next.js, React.js.
+For customisation used Tailwind Css - https://tailwindcss.com/,
+Lucide icons - https://lucide.dev/icons/
+Also for ready styled components used Shadcn - https://ui.shadcn.com/
 
-To learn more about Next.js, take a look at the following resources:
+## About Application
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This Application made for finding all models by Specific Car manufacture and year of Release.
+Key features :
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Select from the list of Car Brands and Years to find all models of cars that has been released.
 
-## Deploy on Vercel
+- Application fully responsive and adaptive for mobile devices, tablets and computers, using tailwind pre configured classes More about you can find
+  Here: https://tailwindcss.com/docs/responsive-design#using-custom-breakpoints
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy Application
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The easiest way to deploy your Next.js app is to use the Vercel Platform - https://vercel.com/ from the creators of Next.js.
+
+Next.js deployment documentation - https://nextjs.org/docs/app/building-your-application/deploying for more details.
