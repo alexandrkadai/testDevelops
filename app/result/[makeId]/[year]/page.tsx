@@ -33,18 +33,22 @@ export default async function ResultPage({
   const year = paramsNew.year;
 
   return (
-    <div className="w-full mt-10 lg:mt-0 relative flex flex-col justify-center items-center">
-      <div className="flex flex-row uppercase gap-4 font-bold text-2xl"></div>
+    <div className="relative mt-10 flex w-full flex-col items-center justify-center lg:mt-0">
+      <div className="flex flex-row gap-4 text-2xl font-bold uppercase"></div>
       <Suspense
         fallback={
           <>
             <Loader2 size={24} className="animate-spin" />
             Loading ...
           </>
-        }>
+        }
+      >
         <ResultsComponent makerId={maker} year={year} />
       </Suspense>
-      <Button asChild className="absolute top-0 left-1 lg:left-5 xl:left-[25%]  uppercase">
+      <Button
+        asChild
+        className="absolute left-1 top-0 uppercase lg:left-5 xl:left-[25%]"
+      >
         <Link href="/">
           <ChevronLeftCircle size={24} />
           Go home

@@ -23,7 +23,7 @@ const ResultsComponent = ({ makerId, year }: Props) => {
     const fetchCarMakes = async () => {
       try {
         const response = await fetch(
-          `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/${makerId}/modelyear/${year}?format=json`,
+          `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/${makerId}/modelyear/${year}?format=json`
         );
 
         if (!response.ok) {
@@ -33,7 +33,8 @@ const ResultsComponent = ({ makerId, year }: Props) => {
         const data = await response.json();
         setResultCar(data.Results);
         setIsLoading(false);
-      } catch (error : any) { setError(error.message);
+      } catch (error: any) {
+        setError(error.message);
         setIsLoading(false);
       }
     };
@@ -41,31 +42,34 @@ const ResultsComponent = ({ makerId, year }: Props) => {
     fetchCarMakes();
   }, []);
 
-  
   if (error) {
     return <div className="p-4 text-red-500">Error: {error}</div>;
   }
   if (isLoading) {
-    return <div className="p-4 mt-10">Loading vehicle models...</div>;
+    return <div className="mt-10 p-4">Loading vehicle models...</div>;
   }
   if (!isLoading && resultCar.length === 0) {
-    return <div className="p-4">No models found for this Car Manufacturer and in this Year.</div>;
+    return (
+      <div className="p-4">
+        No models found for this Car Manufacturer and in this Year.
+      </div>
+    );
   }
 
   return (
     <>
       <h2 className="text-2xl font-bold">Results</h2>
-      
+
       {resultCar.map((item) => (
         <div
           key={item.Model_Name}
-          className="mt-10 sm:w-auto lg:mx-0 lg:w-[400px] flex border-2 border-black rounded-md p-2 uppercase justify-between font-bold">
-          <span className='mx-3'>{item.Make_Name}</span>
-          <span className='mx-3'>{item.Model_Name}</span>
-          <span className='mx-3'>{item.Model_ID}</span>
+          className="mt-10 flex justify-between rounded-md border-2 border-black p-2 font-bold uppercase sm:w-auto lg:mx-0 lg:w-[400px]"
+        >
+          <span className="mx-3">{item.Make_Name}</span>
+          <span className="mx-3">{item.Model_Name}</span>
+          <span className="mx-3">{item.Model_ID}</span>
         </div>
       ))}
-      
     </>
   );
 };

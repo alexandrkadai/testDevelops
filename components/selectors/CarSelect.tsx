@@ -1,6 +1,12 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
 
 interface iCarMake {
   MakeId: number;
@@ -54,13 +60,15 @@ const CarsSelect = ({ setCarMaker }: iSelectCar) => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  if(isLoading){
-    return <div className="">Loading ....</div>
+  if (isLoading) {
+    return <div className="">Loading ....</div>;
   }
 
   return (
-    <div className="p-4 w-auto lg:w-[300px]">
-      <h1 className="text-2xl w-auto lg:w-[300px] font-bold mb-4">Select Car Manufacture</h1>
+    <div className="w-auto p-4 lg:w-[300px]">
+      <h1 className="mb-4 w-auto text-2xl font-bold lg:w-[300px]">
+        Select Car Manufacture
+      </h1>
       <div className="gap-4">
         <Select onValueChange={(value) => setCarMaker(value)}>
           <SelectTrigger>
@@ -69,8 +77,13 @@ const CarsSelect = ({ setCarMaker }: iSelectCar) => {
 
           <SelectContent>
             {makes.map((make) => (
-              <div key={make.MakeId} className="m-2 hover:shadow-md hover:font-bold">
-                <SelectItem value={make.MakeId.toString()}>{make.MakeName}</SelectItem>
+              <div
+                key={make.MakeId}
+                className="m-2 hover:font-bold hover:shadow-md"
+              >
+                <SelectItem value={make.MakeId.toString()}>
+                  {make.MakeName}
+                </SelectItem>
               </div>
             ))}
           </SelectContent>
