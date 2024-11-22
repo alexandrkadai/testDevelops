@@ -30,13 +30,11 @@ export default function Home() {
       <YearSelect setYearCar={setYearCar} />
       <div className="flex flex-col p-4">
         <h2 className="mb-4 text-2xl font-bold">Proceed</h2>
-        {carMaker && yearCar ? (
-          <Button asChild>
-            <Link href={`/result/${carMaker}/${yearCar}`}>Next</Link>
-          </Button>
-        ) : (
-          <Button disabled>Next</Button>
-        )}
+        
+          <Link href={`/result/${carMaker}/${yearCar}`}>
+            <Button disabled={carMaker && yearCar ? false : true} className='w-full'>Next </Button>
+          </Link>
+       
       </div>
     </div>
   );
