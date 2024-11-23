@@ -61,7 +61,14 @@ const CarsSelect = ({ setCarMaker }: iSelectCar) => {
     return <div>Error: {error}</div>;
   }
   if (isLoading) {
-    return <div className="">Loading ....</div>;
+    return (
+      <div className="w-[300px] border-2">
+        <h1 className="mb-4 w-auto text-2xl font-bold lg:w-[300px]">
+          Select Car Manufacture
+        </h1>
+        <span className="">Loading ....</span>
+      </div>
+    );
   }
 
   return (

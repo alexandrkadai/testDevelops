@@ -1,41 +1,14 @@
-'use client';
-import { Suspense, useState } from 'react';
-
-import CarsSelect from '@/components/selectors/CarSelect';
-
-import YearSelect from '@/components/selectors/YearSelect';
-
-import { Button } from '@/components/ui/button';
-
-import Link from 'next/link';
-
-import { Loader2 } from 'lucide-react';
+import Filters from '@/components/filters/Filters';
 
 export default function Home() {
-  const [carMaker, setCarMaker] = useState<string>('');
-  const [yearCar, setYearCar] = useState<string>('');
-
   return (
-    <div className="flex w-full flex-col items-center justify-center lg:flex-row">
-      <Suspense
-        fallback={
-          <>
-            <Loader2 size={24} className="animate-spin" />
-            Loading ...
-          </>
-        }
-      >
-        <CarsSelect setCarMaker={setCarMaker} />
-      </Suspense>
-      <YearSelect setYearCar={setYearCar} />
-      <div className="flex flex-col p-4">
-        <h2 className="mb-4 text-2xl font-bold">Proceed</h2>
-        
-          <Link href={`/result/${carMaker}/${yearCar}`}>
-            <Button disabled={carMaker && yearCar ? false : true} className='w-full'>Next </Button>
-          </Link>
-       
-      </div>
-    </div>
+    <>
+      <header className='w-full text-center'>
+        <h1 className='text-2xl font-bold'>Welcome to the Car Finder App</h1>
+      </header>
+      <main className='mt-10'>
+        <Filters />
+      </main>
+    </>
   );
 }
