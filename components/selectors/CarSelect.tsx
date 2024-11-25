@@ -22,40 +22,8 @@ const CarsSelect = ({ setCarMaker }: iSelectCar) => {
   const [makes, setMakes] = useState<iCarMake[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const api = process.env.NEXT_PUBLIC_CAR_SELECT || '';
+  
 
-  useEffect(() => {
-    const fetchCarMakes = async () => {
-      try {
-        const response = await fetch(api);
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch car makes');
-        }
-
-        const data = await response.json();
-        const dataSorted = data.Results.sort((a: any, b: any) => {
-          const nameA = a.MakeName.toUpperCase();
-          const nameB = b.MakeName.toUpperCase();
-          if (nameA < nameB) {
-            return -1;
-          }
-          if (nameA > nameB) {
-            return 1;
-          }
-
-          return 0;
-        });
-        setMakes(dataSorted);
-        setIsLoading(false);
-      } catch (err: any) {
-        setError(err.message);
-        setIsLoading(false);
-      }
-    };
-
-    fetchCarMakes();
-  }, []);
 
   if (error) {
     return <div>Error: {error}</div>;
