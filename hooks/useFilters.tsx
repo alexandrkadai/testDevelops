@@ -1,6 +1,16 @@
+import { create } from 'zustand';
+import { iFilterState } from '@/types/filters-state';
 const api = process.env.NEXT_PUBLIC_CAR_SELECT || '';
 
-export async function fetchCarMakes(){
+export const useFilter = create<iFilterState>((set) => ({
+  loading: true,
+  fetchError: false,
+
+  modelId: null,
+  yearCar: null,
+  modelsList: [],
+
+  fetchCarMakes: async () => {
     try {
       const response = await fetch(api);
 
@@ -9,7 +19,7 @@ export async function fetchCarMakes(){
       }
 
       const data = await response.json();
-      const dataSorted = data.Results.sort((a: any, b: any) => {
+      const modelsList = data.Results.sort((a: any, b: any) => {
         const nameA = a.MakeName.toUpperCase();
         const nameB = b.MakeName.toUpperCase();
         if (nameA < nameB) {
@@ -21,13 +31,15 @@ export async function fetchCarMakes(){
 
         return 0;
       });
-      setMakes(dataSorted);
-      setIsLoading(false);
+      set({ modelsList });
+      set({ loading: false });
     } catch (err: any) {
-      setError(err.message);
-      setIsLoading(false);
+      set({ fetchError: err.message });
+      set({ loading: false });
+    } finally {
+      set({ loading: false });
     }
-  };
-
-  
-}
+  },
+  setModelId: (modelId: string | null) => set({ modelId }),
+  setModelYear: (yearCar: number | null) => set({ yearCar }),
+}));
