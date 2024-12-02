@@ -1,4 +1,9 @@
+interface iSelectOptions{
+    id: number;
+    name: string;
+}
 export interface iSelectElement {
   headerText: string;
-  options: string[] | number[];
+  options: iSelectOptions[];
+  onSelect: (value: string | number | null) => void
 }

@@ -5,7 +5,6 @@ const api = process.env.NEXT_PUBLIC_CAR_SELECT || '';
 export const useFilter = create<iFilterState>((set) => ({
   loading: true,
   fetchError: false,
-
   modelId: null,
   yearCar: null,
   modelsList: [],
@@ -41,5 +40,5 @@ export const useFilter = create<iFilterState>((set) => ({
     }
   },
   setModelId: (modelId: string | null) => set({ modelId }),
-  setModelYear: (yearCar: number | null) => set({ yearCar }),
+  setModelYear: (yearCar: string | null) => set({ yearCar }),
 }));

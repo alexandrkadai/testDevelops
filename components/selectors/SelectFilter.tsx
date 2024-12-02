@@ -8,37 +8,28 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../ui/select';
-import { useFilter } from '@/hooks/useFilters';
 
-export default function SelectElement({ headerText }: iSelectElement) {
-  const {
-    loading,
-    fetchError,
-    modelId,
-    yearCar,
-    fetchCarMakes,
-    setModelId,
-    setModelYear,
-  } = useFilter();
+export default function SelectElement({ headerText, options, onSelect  }: iSelectElement) {
+ 
   return (
     <div className="w-auto p-4 lg:w-[300px]">
       <h1 className="mb-4 w-auto text-2xl font-bold lg:w-[300px]">
         {headerText}
       </h1>
       <div className="gap-4">
-        <Select onValueChange={(value) => setCarMaker(value)}>
+        <Select onValueChange={(value) => onSelect(value)}>
           <SelectTrigger>
             <SelectValue placeholder="Choose Car" />
           </SelectTrigger>
 
           <SelectContent>
-            {makes.map((make) => (
+            {options.map((item) => (
               <div
-                key={make.MakeId}
+                key={item.id}
                 className="m-2 hover:font-bold hover:shadow-md"
               >
-                <SelectItem value={make.MakeId.toString()}>
-                  {make.MakeName}
+                <SelectItem value={item.id.toString()}>
+                  {item.name}
                 </SelectItem>
               </div>
             ))}

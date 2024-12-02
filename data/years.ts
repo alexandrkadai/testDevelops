@@ -1,16 +1,16 @@
 export interface iYearType {
   id: number;
-  year: string;
+  name: string;
 }
 export const YearsData: iYearType[] = [
-  { id: 1, year: '2015' },
-  { id: 2, year: '2016' },
-  { id: 3, year: '2017' },
-  { id: 4, year: '2018' },
-  { id: 5, year: '2019' },
-  { id: 6, year: '2020' },
-  { id: 7, year: '2021' },
-  { id: 8, year: '2022' },
-  { id: 9, year: '2023' },
-  { id: 10, year: '2024' },
+  { id: 1, name: '2015' },
+  { id: 2, name: '2016' },
+  { id: 3, name: '2017' },
+  { id: 4, name: '2018' },
+  { id: 5, name: '2019' },
+  { id: 6, name: '2020' },
+  { id: 7, name: '2021' },
+  { id: 8, name: '2022' },
+  { id: 9, name: '2023' },
+  { id: 10, name: '2024' },
 ];

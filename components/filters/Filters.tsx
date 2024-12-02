@@ -4,6 +4,7 @@ import Link from 'next/link';
 import SelectFilter from '../selectors/SelectFilter';
 import { useFilter } from '@/hooks/useFilters';
 import { useEffect } from 'react';
+import { YearsData } from '@/data/years';
 
 export default function Filters() {
   const {
@@ -25,8 +26,16 @@ export default function Filters() {
     <div className="flex w-full flex-col items-center justify-center lg:flex-row">
       <div className="flex flex-col p-4">
         <h2 className="mb-4 text-2xl font-bold">Proceed</h2>
-        <SelectFilter headerText="Choose Car Maker" options={modelsList}/>
-        <SelectFilter headerText="Choose Year of Release" options={}/>
+        <SelectFilter
+          headerText="Choose Car Maker"
+          options={modelsList}
+          onSelect={(value) => setModelId(value as string | null)}
+        />
+        <SelectFilter
+          headerText="Choose Year of Release"
+          options={YearsData}
+          onSelect={(value) => setModelYear(value as string | null)}
+        />
         <Link href={`/result/${modelId}/${yearCar}`}>
           <Button
             disabled={modelId && yearCar ? false : true}
