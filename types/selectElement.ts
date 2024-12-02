@@ -1,3 +1,4 @@
 export interface iSelectElement {
-    headerText: string;
+  headerText: string;
+  options: string[] | number[];
 }
