@@ -24,11 +24,14 @@ export default function Filters() {
 
   return (
     <div className="flex w-full flex-col items-center justify-center lg:flex-row">
-      <div className="flex flex-col p-4">
-        <h2 className="mb-4 text-2xl font-bold">Proceed</h2>
+      {loading && <h2 className="mb-4 text-2xl font-bold">Loading...</h2>}
+      <div className="flex flex-row p-4">
         <SelectFilter
           headerText="Choose Car Maker"
-          options={modelsList}
+          options={modelsList.map((model) => ({
+            id: model.MakeId,
+            name: model.MakeName,
+          }))}
           onSelect={(value) => setModelId(value as string | null)}
         />
         <SelectFilter
