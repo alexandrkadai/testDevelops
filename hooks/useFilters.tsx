@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { iFilterState } from '@/types/filters-state';
-const api = process.env.NEXT_PUBLIC_CAR_SELECT || '';
+import { getStaticVehicles } from '@/api/staticCarManufacturer';
+
 
 export const useFilter = create<iFilterState>((set) => ({
   loading: true,
@@ -11,14 +12,16 @@ export const useFilter = create<iFilterState>((set) => ({
 
   fetchCarMakes: async () => {
     try {
-      const response = await fetch(api);
+      const response = await getStaticVehicles();
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch car makes');
-      }
 
-      const data = await response.json();
-      const modelsList = data.Results.sort((a: any, b: any) => {
+      
+      const data = response.Results.map((model) => ({
+        MakeId: model.MakeId,
+        MakeName: model.MakeName,
+      }));
+      
+      const modelsList = data.sort((a: any, b: any) => {
         const nameA = a.MakeName.toUpperCase();
         const nameB = b.MakeName.toUpperCase();
         if (nameA < nameB) {
@@ -30,6 +33,7 @@ export const useFilter = create<iFilterState>((set) => ({
 
         return 0;
       });
+      console.log(modelsList);
       set({ modelsList });
       set({ loading: false });
     } catch (err: any) {

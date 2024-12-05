@@ -1,8 +1,9 @@
 import { api } from './index';
-import { ModelResponse } from '@/types/api';
+import { ModelsResponse } from '@/types/api';
+
 export const getStaticVehicles = async () => {
-  const { data } = await api.get<ModelResponse>(
-    'vehicles/GetMakesForVehicleType/car',
+  const { data } = await api.get<ModelsResponse>(
+    '/vehicles/GetMakesForVehicleType/car',
     {
       params: { format: 'json' },
     }

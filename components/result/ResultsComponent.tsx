@@ -10,22 +10,22 @@ interface CarMakeResult {
 }
 
 interface Props {
-  makerId: string;
-  year: string;
+  modelId: string;
+  yearCar: string;
 }
 
-const ResultsComponent = ({ makerId, year }: Props) => {
+const ResultsComponent = ({ modelId, yearCar }: Props) => {
   const [resultCar, setResultCar] = useState<CarMakeResult[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  console.log(modelId, yearCar);
   useEffect(() => {
     const fetchCarMakes = async () => {
       try {
         const response = await fetch(
-          `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/${makerId}/modelyear/${year}?format=json`
+          `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/${modelId}/modelyear/${yearCar}?format=json`
         );
-
+        
         if (!response.ok) {
           throw new Error('Failed to fetch car makes');
         }
