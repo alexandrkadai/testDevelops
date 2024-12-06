@@ -8,5 +8,6 @@ export const getStaticVehicles = async () => {
       params: { format: 'json' },
     }
   );
+  
   return data;
 };

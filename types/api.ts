@@ -11,3 +11,4 @@ export interface ModelResponse {
   VehicleTypeId: number;
   VehicleTypeName: string;
 }
+

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
+
 interface CarMakeResult {
   Make_ID: number;
   Make_Name: string;
@@ -18,7 +19,7 @@ const ResultsComponent = ({ modelId, yearCar }: Props) => {
   const [resultCar, setResultCar] = useState<CarMakeResult[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log(modelId, yearCar);
+
   useEffect(() => {
     const fetchCarMakes = async () => {
       try {

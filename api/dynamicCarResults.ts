@@ -8,5 +8,6 @@ export const getDynamicVehicles = async () => {
       params: { format: 'json' },
     }
   );
+  
   return data;
 };
