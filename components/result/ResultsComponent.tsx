@@ -1,26 +1,23 @@
 'use client';
-
+import { iParam } from '@/types/paramStatic';
 import { useEffect, useState } from 'react';
-
-
 interface CarMakeResult {
   Make_ID: number;
   Make_Name: string;
   Model_ID: number;
   Model_Name: string;
 }
-
-interface Props {
-  modelId: string;
-  yearCar: string;
-}
-
-const ResultsComponent = ({ modelId, yearCar }: Props) => {
+const ResultsComponent =({modelId, yearCar} : iParam) => {
+ 
   const [resultCar, setResultCar] = useState<CarMakeResult[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
+  console.log(modelId, yearCar);
+
   useEffect(() => {
+    if (modelId && yearCar) {
     const fetchCarMakes = async () => {
       try {
         const response = await fetch(
@@ -33,6 +30,7 @@ const ResultsComponent = ({ modelId, yearCar }: Props) => {
 
         const data = await response.json();
         setResultCar(data.Results);
+        console.log(data.Results);
         setIsLoading(false);
       } catch (error: any) {
         setError(error.message);
@@ -41,7 +39,7 @@ const ResultsComponent = ({ modelId, yearCar }: Props) => {
     };
 
     fetchCarMakes();
-  }, []);
+  }}, [modelId, yearCar]);
 
   if (error) {
     return <div className="p-4 text-red-500">Error: {error}</div>;

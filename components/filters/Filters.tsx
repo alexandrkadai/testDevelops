@@ -33,11 +33,13 @@ export default function Filters() {
             name: model.MakeName,
           }))}
           onSelect={(value) => setModelId(value as string | null)}
+          
         />
         <SelectFilter
           headerText="Choose Year of Release"
           options={YearsData}
           onSelect={(value) => setModelYear(value as string | null)}
+          
         />
         <Link href={`/result/${modelId}/${yearCar}`}>
           <Button

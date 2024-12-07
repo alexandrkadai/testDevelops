@@ -2,7 +2,6 @@ import { create } from 'zustand';
 import { iFilterState } from '@/types/filters-state';
 import { getStaticVehicles } from '@/api/staticCarManufacturer';
 
-
 export const useFilter = create<iFilterState>((set) => ({
   loading: true,
   fetchError: false,
@@ -14,13 +13,11 @@ export const useFilter = create<iFilterState>((set) => ({
     try {
       const response = await getStaticVehicles();
 
-
-      
       const data = response.Results.map((model) => ({
         MakeId: model.MakeId,
         MakeName: model.MakeName,
       }));
-      
+
       const modelsList = data.sort((a: any, b: any) => {
         const nameA = a.MakeName.toUpperCase();
         const nameB = b.MakeName.toUpperCase();
@@ -33,7 +30,6 @@ export const useFilter = create<iFilterState>((set) => ({
 
         return 0;
       });
-      console.log(modelsList);
       set({ modelsList });
       set({ loading: false });
     } catch (err: any) {
