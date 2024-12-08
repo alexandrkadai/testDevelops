@@ -36,15 +36,18 @@ export default function Filters() {
           
         />
         <SelectFilter
+        options={YearsData.map((year) => ({
+					id: year.name,
+					name: year.name,
+				}))}
           headerText="Choose Year of Release"
-          options={YearsData}
           onSelect={(value) => setModelYear(value as string | null)}
           
         />
         <Link href={`/result/${modelId}/${yearCar}`}>
           <Button
             disabled={modelId && yearCar ? false : true}
-            className="w-full"
+            className="w-[100px] items-center justify-center mt-16"
           >
             Next
           </Button>

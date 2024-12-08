@@ -29,13 +29,12 @@ const ResultPage = async ({
   params: Promise<iParam>; 
 }) => {
   const { modelId, yearCar } = await params;  
-  console.log('This is Result Page', modelId, yearCar);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div className="relative mt-10 flex w-full flex-col items-center justify-center lg:mt-0">
         <div className="flex flex-row gap-4 text-2xl font-bold uppercase"></div>
-        <ResultsComponent modelId={modelId} yearCar={yearCar} />
+        <ResultsComponent modelId={+modelId} yearCar={+yearCar} />
         <Button
           asChild
           className="absolute left-1 top-0 uppercase lg:left-5 xl:left-[25%]"

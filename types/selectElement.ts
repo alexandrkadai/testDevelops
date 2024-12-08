@@ -1,5 +1,5 @@
 interface iSelectOptions{
-    id: number;
+    id: number | string;
     name: string;
 }
 export interface iSelectElement {

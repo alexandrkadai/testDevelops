@@ -1,4 +1,4 @@
 export interface iParam{
-    modelId: string;
-    yearCar: string;
+    modelId: number;
+    yearCar: number;
 }

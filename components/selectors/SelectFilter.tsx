@@ -1,5 +1,4 @@
 'use client';
-
 import { iSelectElement } from '@/types/selectElement';
 import {
   Select,
@@ -8,7 +7,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../ui/select';
-
 export default function SelectElement({ headerText, options, onSelect  }: iSelectElement) {
  
   return (
