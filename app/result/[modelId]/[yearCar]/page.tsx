@@ -31,7 +31,7 @@ const ResultPage = async ({
   const { modelId, yearCar } = await params;  
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className='text-2xl font-bold text-center'>Loading...</div>}>
       <div className="relative mt-10 flex w-full flex-col items-center justify-center lg:mt-0">
         <div className="flex flex-row gap-4 text-2xl font-bold uppercase"></div>
         <ResultsComponent modelId={+modelId} yearCar={+yearCar} />

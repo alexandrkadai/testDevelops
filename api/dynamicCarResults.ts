@@ -1,10 +1,11 @@
 'use server';
+import { iDynamicModelsResponse } from '@/types/apiDynamic';
 import { api } from './index';
-import { ModelsResponse } from '@/types/api';
+
 
 export const getDynamicVehicles = async (modelId: number, yearCar: number) => {
   try {
-    const { data } = await api.get<ModelsResponse>(
+    const { data } = await api.get<iDynamicModelsResponse>(
       `/vehicles/GetModelsForMakeIdYear/makeId/${modelId}/modelyear/${yearCar}`,
       {
         params: { format: 'json' },
@@ -13,13 +14,14 @@ export const getDynamicVehicles = async (modelId: number, yearCar: number) => {
     
     console.log(data.Message)
 
-    // if (!data || !data.Results) {
-    //   return {
-    //     vehicles: [],
-    //     error: true,
-    //   };
-    // }
+    if (!data || !data.Results) {
+      return {
+        vehicles: [],
+        error: true,
+      };
+    }
 
+    
     return { vehicles: data.Results, error: false };
 
   } catch (error) {

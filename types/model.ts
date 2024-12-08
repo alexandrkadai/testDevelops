@@ -1,4 +1,4 @@
 export interface iModel {
-    MakeId: number;
-    MakeName: string;
+    id: number;
+    name: string;
 }

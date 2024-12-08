@@ -12,7 +12,6 @@ export default function Filters() {
     yearCar,
     modelsList,
     loading,
-    fetchError,
     fetchCarMakes,
     setModelId,
     setModelYear,
@@ -21,16 +20,16 @@ export default function Filters() {
   useEffect(() => {
     fetchCarMakes();
   }, []);
-
+  console.log(modelsList);
   return (
     <div className="flex w-full flex-col items-center justify-center lg:flex-row">
-      {loading && <h2 className="mb-4 text-2xl font-bold">Loading...</h2>}
+   
       <div className="flex flex-row p-4">
         <SelectFilter
-          headerText="Choose Car Maker"
-          options={modelsList.map((model) => ({
-            id: model.MakeId,
-            name: model.MakeName,
+          headerText={loading ? "Loading..." : "Choose Car Maker"}
+          options={modelsList.map((item) => ({
+            id: item.id,
+            name: item.name,
           }))}
           onSelect={(value) => setModelId(value as string | null)}
           

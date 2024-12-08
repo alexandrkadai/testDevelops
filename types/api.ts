@@ -6,9 +6,9 @@ export interface ModelsResponse {
 }
 
 export interface ModelResponse {
-  Make_ID: number;
-	Make_Name: string;
-	Model_ID: number;
-	Model_Name: string;
+  MakeId: number;
+	MakeName: string;
+	VehicleTypeId: number;
+	VehicleTypeName: string;
 }
 
