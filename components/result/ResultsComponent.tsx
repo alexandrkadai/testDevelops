@@ -2,7 +2,7 @@ import { getDynamicVehicles } from '@/api/dynamicCarResults';
 import { iParam } from '@/types/paramStatic';
 
 const ResultsComponent = async ({ modelId, yearCar }: iParam) => {
-  const { vehicles, error } = await getDynamicVehicles(modelId, yearCar);
+  const { vehicles, error} = await getDynamicVehicles(modelId, yearCar);
 
   console.log(vehicles);
 
@@ -11,6 +11,9 @@ const ResultsComponent = async ({ modelId, yearCar }: iParam) => {
       <h2 className="text-2xl font-bold">Results</h2>
       {!vehicles.length && (
         <div className="text-2xl text-center font-bold mt-5">Wainting .... </div>
+      )}
+      {error && !vehicles.length &&  (
+        <div className="text-2xl text-center font-bold mt-5"><p>Something Go Wrong </p> </div>
       )}
       {vehicles.length && (
         <div>
